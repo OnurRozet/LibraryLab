@@ -48,3 +48,25 @@ Birden fazla kuralı tek bir sorguda birleştirmek oldukça basittir:
 var combinedSpec = bigBooksSpec.And(turkishLanguageSpec);
 var result = await dbContext.ApplySpecification(combinedSpec).ToListAsync();
 ```
+
+## 🏗️ Proje Yapısı
+
+* **Specifications/Base:** Desenin kalbi olan interface ve abstract sınıflar.
+* **Specifications/:** Somut iş kuralları (Örn: `LanguageSpecification`, `RecentBookSpecification`).
+* **Features/:** Dikey dilim (Vertical Slice) mantığıyla her özelliğin kendi endpoint sınıfı.
+* **Extensions/:** DbContext'i Specification yetenekleriyle donatan extension metodları.
+
+---
+
+## 📋 Kurulum ve Çalıştırma
+
+1. **Repoyu klonlayın:** `git clone https://github.com/OnurRozet/LibraryLab.git`
+2. **Veritabanı bağlantı dizesini** `appsettings.json` içinde güncelleyin.
+3. **Migration'ları uygulayın:** `dotnet ef database update`
+4. **Uygulamayı çalıştırın:** `dotnet run` (Sistem ilk açılışta Bogus ile otomatik veri üretecektir).
+
+---
+
+## 📌 Geliştirici Notu
+
+Bu çalışma, karmaşık mimarilerin sadeleştirilmesi ve modern .NET pratiklerinin uygulanması üzerine bir vaka çalışması (case study) niteliğindedir. Proje geliştirme sürecinde kod kalitesi, performans ve sürdürülebilirlik prensipleri ön planda tutulmuş; test süreçlerini optimize etmek adına **Bogus** kütüphanesi ile zengin bir veri seti oluşturulmuştur.
